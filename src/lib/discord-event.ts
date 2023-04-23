@@ -111,6 +111,7 @@ export class DiscordEvent {
     const timeMatches = existingEvent.scheduledStartAt?.getTime() === this.startDate.getTime() && existingEvent.scheduledEndAt?.getTime() === this.endDate.getTime()
     if (descriptionMatches && locationMatches && timeMatches) {
       console.log(`Event ${this.summary} already exists, skipping`)
+      // for now it doesn't actually skip, but it should
       await existingEvent.edit({
         description: this.description,
         scheduledStartTime: this.startTime,
