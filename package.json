@@ -41,7 +41,7 @@
           "dockerFile": "Dockerfile",
           "dockerRegistry": "ghcr.io",
           "dockerProject": "cbackas",
-          "dockerImage": "EventBot"
+          "dockerImage": "eventbot"
         }
       ]
     ]
