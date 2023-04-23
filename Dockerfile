@@ -1,16 +1,21 @@
-FROM node:18-slim AS build
+FROM node:18-slim AS base
+RUN apt-get update && apt-get install -y python3
+
+FROM base AS build
 WORKDIR /build
-COPY . .
+COPY package.json .
+COPY package-lock.json .
 RUN npm ci
+
+COPY src src
+COPY esbuild.mjs esbuild.mjs
+COPY tsconfig.json tsconfig.json
 RUN npm run build
 
-FROM node:18-slim AS prod
+FROM base AS prod
 WORKDIR /app
-RUN apt-get update && apt-get -y install openssl
-RUN npm install pm2 prisma --save-dev && npm install @prisma/client
-COPY --from=build /build/prisma ./prisma
+RUN npm install pm2 --save-dev && npm install canvas --save
 COPY --from=build /build/dist .
-COPY --from=build /build/entrypoint.sh .
+COPY entrypoint.sh .
 ENV TZ="America/Chicago"
-RUN npx prisma generate
 ENTRYPOINT ["sh", "entrypoint.sh"]
