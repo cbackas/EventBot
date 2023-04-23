@@ -1,0 +1,12 @@
+node_modules
+dist
+data/
+.env
+
+*.db
+*.db-journal
+
+# Mac
+.DS_Store
+
+mongodata
