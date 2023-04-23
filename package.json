@@ -37,14 +37,10 @@
       [
         "@codedependant/semantic-release-docker",
         {
-          "dockerTags": [
-            "{{#if prerelease.[0]}}{{prerelease.[0]}}{{else}}latest{{/if}}",
-            "{{version}}"
-          ],
+          "dockerTags": ["{{version}}", "latest"],
           "dockerImage": "eventbot",
           "dockerFile": "Dockerfile",
-          "dockerRegistry": "ghcr.io",
-          "dockerProject": "cbackas"
+          "dockerRegistry": "ghcr.io"
         }
       ]
     ]
