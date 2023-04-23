@@ -20,5 +20,33 @@
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
     "typescript": "^4.9.5"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "eslint"
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@codedependant/semantic-release-docker",
+        {
+          "dockerTags": [
+            "{{#if prerelease.[0]}}{{prerelease.[0]}}{{else}}latest{{/if}}",
+            "{{version}}"
+          ],
+          "dockerImage": "eventbot",
+          "dockerFile": "Dockerfile",
+          "dockerRegistry": "ghcr.io",
+          "dockerProject": "cbackas"
+        }
+      ]
+    ]
   }
 }
