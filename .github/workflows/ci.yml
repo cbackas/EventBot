@@ -20,6 +20,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
+      
+      - name: Install Semantic Release
+        run: npm install semantic-release @codedependant/semantic-release-docker
 
       - name: Semantic Release
         env:
