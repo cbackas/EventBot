@@ -27,7 +27,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           DOCKER_REGISTRY_USER: ${{ github.actor }}
-          DOCKER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
+          # DOCKER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
+          DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
 
       - name: Slack Notification
