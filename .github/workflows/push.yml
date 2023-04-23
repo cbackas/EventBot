@@ -21,7 +21,7 @@ jobs:
           node-version: 18
       
       - name: Install Semantic Release
-        run: npm install semantic-release @codedependant/semantic-release-docker
+        run: npm install semantic-release @codedependant/semantic-release-docker conventional-changelog-eslint
 
       - name: Semantic Release
         env:
