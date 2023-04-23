@@ -22,7 +22,7 @@ jobs:
         run: npm install semantic-release @codedependant/semantic-release-docker
 
       - name: Semantic Release
-        # env:
+        env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release
 
